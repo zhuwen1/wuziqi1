@@ -71,3 +71,56 @@ chess.onclick = function(e){
 	
 	
 }
+//赢法数组
+//1:定义一个空的三维数组
+var wins = [];
+for (var i = 0; i < 15; i++) {
+	wins[i] = [];
+	for (var j = 0; j < 15; j++) {
+		wins[i][j] = [];
+	}
+}
+var count = 0;
+//所有横向赢法统计
+for (var i = 0; i < 15; i++) {
+	for (var j = 0; j < 11; j++) {
+		for (var k = 0; k < 5; k++) {
+			wins[i][j+k][count] =true;
+			
+		}
+		count++;
+	}
+}
+
+//所有竖线的赢法统计
+for (var i = 0; i < 11; i++) {
+		for (var j = 0; j < 15 ; j++) {
+			for (var k = 0; k <5 ; k++) {
+				wins[i+k][j][count] = true;	
+				
+			}
+			count++;
+		}
+}
+
+
+//所有斜线赢法统计
+for (var i = 0; i < 11; i++) {
+	for (var j = 0; j < 11; j++) {
+		for (var k = 0; k < 5; k++) {
+			wins[i+k][j+k][count] = true;
+		}
+		count++;
+	}
+}
+
+
+for (var i = 0; i < 11; i++) {
+	for (var j = 14; j > 3; j--) {
+		for (var k = 0; k < 5; k++) {
+			wins[i+k][j-k][count] = true;
+		}
+		count++;
+	}
+}
+console.log(count);
